@@ -37,6 +37,10 @@ namespace photon {
 			return *this;
 		}
 
+		double vec2::dot(const vec2& other) {
+			return x * other.x + y * other.y;
+		}
+
 		vec2 operator+(const vec2& left, const vec2& right) {
 			vec2 output(left.x + right.x, left.y + right.y);
 			return output;

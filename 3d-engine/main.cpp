@@ -14,13 +14,19 @@ int main() {
 	vec3 a(1.0, 2.0, 3.0);
 	vec3 b(4.0, 3.0, 7.0);
 	vec3 c(2.0, 8.0, -2.0);
-	mat3x3 M = mat3x3::basis(a, b, c);
-	mat3x3 I2 = mat3x3::mat3x3(2.0);
-	PRINT(M);
-	PRINT(I2);
-	mat3x3 M2 = M * I2;
-	PRINT(M);
-	PRINT(M2);
+	mat3x3 A = mat3x3::basis(a, b, c);
+	
+	vec3 d(4.0, -5.0, 2.0);
+	vec3 e(1.0, 3.0, 7.0);
+	vec3 f(2.0, -1.0, -5.0);
+	mat3x3 B = mat3x3::basis(d, e, f);
+
+	PRINT(A);
+	PRINT(B);
+
+	A.multiply(B);
+	PRINT(A);
+
 	glClearColor(0.8f, 0.3f, 0.3f, 1.0f);
 
 	// Testing that GLEW is working

@@ -30,23 +30,27 @@ namespace photon {
 			return output;
 		}
 
-		void mat3x3::setItem(int col, int row, double value) { 
+		double mat3x3::getItem(int row, int col) const {
+			return elements[row + col * 3];
+		}
+
+		void mat3x3::setItem(int row, int col, double value) { 
 			elements[row + col * 3] = value; 
 		}
 
 		vec3 mat3x3::getColumn(int col) const {
 			return vec3(
-				elements[0 + col*3],
-				elements[1 + col*3],
-				elements[2 + col*3]
+				getItem(0, col),
+				getItem(1, col),
+				getItem(2, col)
 			);
 		}
 
 		vec3 mat3x3::getRow(int row) const {
 			return vec3(
-				elements[row + 0 * 3],
-				elements[row + 1 * 3],
-				elements[row + 2 * 3]
+				getItem(row, 0),
+				getItem(row, 1),
+				getItem(row, 2)
 			);
 		}
 

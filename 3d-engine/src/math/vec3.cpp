@@ -54,21 +54,44 @@ namespace photon {
 			return output;
 		}
 
+		double vec3::getItem(int i) const {
+			if (i == 0) {
+				return x;
+			}
+			else if (i == 1) {
+				return y;
+			}
+			else {
+				return z;
+			}
+		}
+		void vec3::setItem(int i, double val) {
+			if (i == 0) {
+				x = val;
+			}
+			else if (i == 1) {
+				y = val;
+			}
+			else {
+				z = val;
+			}
+		}
+
 		vec3 operator+(const vec3& left, const vec3& right) {
-			vec3 output(left.x + right.x, left.y + right.y, left.z + right.z);
-			return output;
+			vec3 output = left;
+			return output.add(right);
 		}
 		vec3 operator-(const vec3& left, const vec3& right) {
-			vec3 output(left.x - right.x, left.y - right.y, left.z - right.z);
-			return output;
+			vec3 output = left;
+			return output.subtract(right);
 		}
 		vec3 operator*(const vec3& left, const vec3& right) {
-			vec3 output(left.x * right.x, left.y * right.y, left.z * right.z);
-			return output;
+			vec3 output = left;
+			return output.multiply(right);
 		}
 		vec3 operator/(const vec3& left, const vec3& right) {
-			vec3 output(left.x / right.x, left.y / right.y, left.z / right.z);
-			return output;
+			vec3 output = left;
+			return output.divide(right);
 		}
 
 		vec3& vec3::operator+=(const vec3& other) { return add(other); }

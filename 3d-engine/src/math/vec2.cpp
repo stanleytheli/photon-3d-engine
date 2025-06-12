@@ -41,21 +41,39 @@ namespace photon {
 			return x * other.x + y * other.y;
 		}
 
+		double vec2::getItem(int i) const {
+			if (i == 0) {
+				return x;
+			}
+			else {
+				return y;
+			}
+		}
+		void vec2::setItem(int i, double val) {
+			if (i == 0) {
+				x = val;
+			}
+			else {
+				y = val;
+			}
+		}
+
+
 		vec2 operator+(const vec2& left, const vec2& right) {
-			vec2 output(left.x + right.x, left.y + right.y);
-			return output;
+			vec2 output = left;
+			return output.add(right);
 		}
 		vec2 operator-(const vec2& left, const vec2& right) {
-			vec2 output(left.x - right.x, left.y - right.y);
-			return output;
+			vec2 output = left;
+			return output.subtract(right);
 		}
 		vec2 operator*(const vec2& left, const vec2& right) {
-			vec2 output(left.x * right.x, left.y * right.y);
-			return output;
+			vec2 output = left;
+			return output.multiply(right);
 		}
 		vec2 operator/(const vec2& left, const vec2& right) {
-			vec2 output(left.x / right.x, left.y / right.y);
-			return output;
+			vec2 output = left;
+			return output.divide(right);
 		}
 
 		vec2& vec2::operator+=(const vec2& other) { return add(other); }

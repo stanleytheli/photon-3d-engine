@@ -44,7 +44,7 @@ namespace photon {
 			int n = 4;
 			double elements[16];
 
-			// 3x3 matrix full of zeroes
+			// 4x4 matrix full of zeroes
 			mat4x4();
 			mat4x4(double diagonal);
 

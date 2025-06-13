@@ -102,6 +102,39 @@ namespace photon {
 		bool vec3::operator==(const vec3& other) { return (x == other.x) && (y == other.y) && (z == other.z); }
 		bool vec3::operator!=(const vec3& other) { return !(*this == other); }
 
+		float vec3::magnitude() { return sqrt(x * x + y * y + z * z); }
+		vec3 vec3::normalized() {
+			vec3 output = *this;
+			output.divide(magnitude());
+			return output;
+		}
+		vec3& vec3::multiply(const float scale) {
+			x *= scale;
+			y *= scale;
+			z *= scale;
+			return *this;
+		}
+		vec3& vec3::divide(const float scale) {
+			x /= scale;
+			y /= scale;
+			z /= scale;
+			return *this;
+		}
+		vec3 operator*(const vec3& left, const float scale) {
+			vec3 output = left;
+			return output.multiply(scale);
+		}
+		vec3 operator/(const vec3& left, const float scale) {
+			vec3 output = left;
+			return output.divide(scale);
+		}
+		vec3& vec3::operator*=(const float scale) {
+			return multiply(scale);
+		}
+		vec3& vec3::operator/=(const float scale) {
+			return divide(scale);
+		}
+
 		std::ostream& operator<<(std::ostream& stream, const vec3& vec) {
 			stream << "vec3(" << vec.x << ", " << vec.y << ", " << vec.z << ")";
 			return stream;

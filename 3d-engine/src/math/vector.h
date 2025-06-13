@@ -38,7 +38,20 @@ namespace photon {
 
 			bool operator==(const vec2& other);
 			bool operator!=(const vec2& other);
-		
+
+			// Get the magnitude = sqrt(v dot v) of this vector
+			float magnitude();
+			// Get a normalized copy of this vector
+			vec2 normalized();
+			// Multiplies this vector by a scalar
+			vec2& multiply(const float scale);
+			// Divides this vector by a scalar
+			vec2& divide(const float scale);
+			friend vec2 operator*(const vec2& left, const float scale);
+			friend vec2 operator/(const vec2& left, const float scale);
+			vec2& operator*=(const float scale);
+			vec2& operator/=(const float scale);
+
 			friend std::ostream& operator<<(std::ostream& stream, const vec2& vec);
 		};
 
@@ -78,6 +91,19 @@ namespace photon {
 			bool operator==(const vec3& other);
 			bool operator!=(const vec3& other);
 
+			// Get the magnitude = sqrt(v dot v) of this vector
+			float magnitude();
+			// Get a normalized copy of this vector
+			vec3 normalized();
+			// Multiplies this vector by a scalar
+			vec3& multiply(const float scale);
+			// Divides this vector by a scalar
+			vec3& divide(const float scale);
+			friend vec3 operator*(const vec3& left, const float scale);
+			friend vec3 operator/(const vec3& left, const float scale);
+			vec3& operator*=(const float scale);
+			vec3& operator/=(const float scale);
+
 			friend std::ostream& operator<<(std::ostream& stream, const vec3& vec);
 		};
 
@@ -114,6 +140,19 @@ namespace photon {
 
 			bool operator==(const vec4& other);
 			bool operator!=(const vec4& other);
+
+			// Get the magnitude = sqrt(v dot v) of this vector
+			float magnitude();
+			// Get a normalized copy of this vector
+			vec4 normalized();
+			// Multiplies this vector by a scalar
+			vec4& multiply(const float scale);
+			// Divides this vector by a scalar
+			vec4& divide(const float scale);
+			friend vec4 operator*(const vec4& left, const float scale);
+			friend vec4 operator/(const vec4& left, const float scale);
+			vec4& operator*=(const float scale);
+			vec4& operator/=(const float scale);
 
 			friend std::ostream& operator<<(std::ostream& stream, const vec4& vec);
 		};

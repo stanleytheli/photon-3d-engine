@@ -8,7 +8,7 @@ namespace photon {
 			y = 0.0;
 		}
 
-		vec2::vec2(const double& x, const double& y) {
+		vec2::vec2(const float& x, const float& y) {
 			this->x = x;
 			this->y = y;
 		}
@@ -37,11 +37,11 @@ namespace photon {
 			return *this;
 		}
 
-		double vec2::dot(const vec2& other) {
+		float vec2::dot(const vec2& other) {
 			return x * other.x + y * other.y;
 		}
 
-		double vec2::getItem(int i) const {
+		float vec2::getItem(int i) const {
 			if (i == 0) {
 				return x;
 			}
@@ -49,7 +49,7 @@ namespace photon {
 				return y;
 			}
 		}
-		void vec2::setItem(int i, double val) {
+		void vec2::setItem(int i, float val) {
 			if (i == 0) {
 				x = val;
 			}

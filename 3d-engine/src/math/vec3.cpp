@@ -9,7 +9,7 @@ namespace photon {
 			z = 0.0;
 		}
 
-		vec3::vec3(const double& x, const double& y, const double& z) {
+		vec3::vec3(const float& x, const float& y, const float& z) {
 			this->x = x;
 			this->y = y;
 			this->z = z;
@@ -43,7 +43,7 @@ namespace photon {
 			return *this;
 		}
 
-		double vec3::dot(const vec3& other) {
+		float vec3::dot(const vec3& other) {
 			return x * other.x + y * other.y + z * other.z;
 		}
 		vec3 vec3::cross(const vec3& other) {
@@ -54,7 +54,7 @@ namespace photon {
 			return output;
 		}
 
-		double vec3::getItem(int i) const {
+		float vec3::getItem(int i) const {
 			if (i == 0) {
 				return x;
 			}
@@ -65,7 +65,7 @@ namespace photon {
 				return z;
 			}
 		}
-		void vec3::setItem(int i, double val) {
+		void vec3::setItem(int i, float val) {
 			if (i == 0) {
 				x = val;
 			}

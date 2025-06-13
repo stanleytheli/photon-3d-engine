@@ -10,7 +10,7 @@ namespace photon {
 			w = 0.0;
 		}
 
-		vec4::vec4(const double& x, const double& y, const double& z, const double& w) {
+		vec4::vec4(const float& x, const float& y, const float& z, const float& w) {
 			this->x = x;
 			this->y = y;
 			this->z = z;
@@ -49,11 +49,11 @@ namespace photon {
 			return *this;
 		}
 
-		double vec4::dot(const vec4& other) {
+		float vec4::dot(const vec4& other) {
 			return x * other.x + y * other.y + z * other.z + w * other.w;
 		}
 
-		double vec4::getItem(int i) const {
+		float vec4::getItem(int i) const {
 			if (i == 0) {
 				return x;
 			}
@@ -67,7 +67,7 @@ namespace photon {
 				return w;
 			}
 		}
-		void vec4::setItem(int i, double val) {
+		void vec4::setItem(int i, float val) {
 			if (i == 0) {
 				x = val;
 			}

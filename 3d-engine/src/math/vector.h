@@ -6,10 +6,10 @@ namespace photon {
 	namespace math {
 
 		struct vec2 {
-			double x, y;
+			float x, y;
 
 			vec2();
-			vec2(const double& x, const double& y);
+			vec2(const float& x, const float& y);
 
 			// Adds the given vector to this vector
 			vec2& add(const vec2& other);
@@ -21,10 +21,10 @@ namespace photon {
 			vec2& divide(const vec2& other);
 
 			// Returns the value of (this vector) dot (other vector)
-			double dot(const vec2& other);
+			float dot(const vec2& other);
 
-			double getItem(int i) const;
-			void setItem(int i, double val);
+			float getItem(int i) const;
+			void setItem(int i, float val);
 
 			friend vec2 operator+(const vec2& left, const vec2& right);
 			friend vec2 operator-(const vec2& left, const vec2& right);
@@ -43,10 +43,10 @@ namespace photon {
 		};
 
 		struct vec3 {
-			double x, y, z;
+			float x, y, z;
 
 			vec3();
-			vec3(const double& x, const double& y, const double& z);
+			vec3(const float& x, const float& y, const float& z);
 
 			// Adds the given vector to this vector			
 			vec3& add(const vec3& other);
@@ -58,12 +58,12 @@ namespace photon {
 			vec3& divide(const vec3& other);
 			
 			// Returns the value of (this vector) dot (given vector)
-			double dot(const vec3& other);
+			float dot(const vec3& other);
 			// Returns the result of (this vector) cross (given vector)
 			vec3 cross(const vec3& other);
 
-			double getItem(int i) const;
-			void setItem(int i, double val);
+			float getItem(int i) const;
+			void setItem(int i, float val);
 
 			friend vec3 operator+(const vec3& left, const vec3& right);
 			friend vec3 operator-(const vec3& left, const vec3& right);
@@ -82,10 +82,10 @@ namespace photon {
 		};
 
 		struct vec4 {
-			double x, y, z, w;
+			float x, y, z, w;
 
 			vec4();
-			vec4(const double& x, const double& y, const double& z, const double& w);
+			vec4(const float& x, const float& y, const float& z, const float& w);
 
 			// Adds the given vector to this vector			
 			vec4& add(const vec4& other);
@@ -97,10 +97,10 @@ namespace photon {
 			vec4& divide(const vec4& other);
 
 			// Returns the value of (this vector) dot (given vector)
-			double dot(const vec4& other);
+			float dot(const vec4& other);
 
-			double getItem(int i) const;
-			void setItem(int i, double val);
+			float getItem(int i) const;
+			void setItem(int i, float val);
 
 			friend vec4 operator+(const vec4& left, const vec4& right);
 			friend vec4 operator-(const vec4& left, const vec4& right);

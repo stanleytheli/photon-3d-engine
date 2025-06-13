@@ -73,7 +73,7 @@ namespace photon {
 		void Window::update() {
 			glfwPollEvents();
 			glfwSwapBuffers(m_window);
-			std::cout << getMouseX() << ", " << getMouseY() << std::endl;
+			// std::cout << getMouseX() << ", " << getMouseY() << std::endl;
 		}
 
 		void Window::windowResize(GLFWwindow* window, int width, int height) {

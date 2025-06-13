@@ -32,19 +32,16 @@ namespace photon {
 			bool closed() const;
 
 			inline int getWidth() const { return m_width; }
-			// inline void setWidth(int width) { m_width = width; }
-
 			inline int getHeight() const { return m_height; }		
-			// inline void setHeight(int height) { m_height = height; }
-
 			inline int getKey(int key) const { return m_keys[key]; }
-			// inline void setKey(int key, bool value) { m_keys[key] = value; }
-
 			inline int getButton(int button) const { return m_buttons[button]; }
-			// inline void setButton(int button, bool value) { m_buttons[button] = value; }
-
 			inline double getMouseX() const { return m_mousex; }
 			inline double getMouseY() const { return m_mousey; }
+
+			// inline void setWidth(int width) { m_width = width; }
+			// inline void setHeight(int height) { m_height = height; }
+			// inline void setKey(int key, bool value) { m_keys[key] = value; }
+			// inline void setButton(int button, bool value) { m_buttons[button] = value; }
 
 		private:
 			bool init();

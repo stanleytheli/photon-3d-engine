@@ -9,7 +9,7 @@ namespace photon {
 			}
 		}
 
-		mat4x4::mat4x4(double diagonal) {
+		mat4x4::mat4x4(float diagonal) {
 			for (int i = 0; i < n * n; i++) {
 				elements[i] = 0.0;
 			}
@@ -31,6 +31,12 @@ namespace photon {
 			return output;
 		}
 
+		mat4x4 mat4x4::scale(float factor) {
+			mat4x4 output = mat4x4(factor);
+			output.setItem(3, 3, 1.0);
+			return output;
+		}
+
 		void mat4x4::basisUnpack(vec4& v0, vec4& v1, vec4& v2, vec4& v3) const {
 			v0 = getColumn(0);
 			v1 = getColumn(1);
@@ -38,11 +44,11 @@ namespace photon {
 			v3 = getColumn(3);
 		}
 
-		double mat4x4::getItem(int row, int col) const {
+		float mat4x4::getItem(int row, int col) const {
 			return elements[row + col * n];
 		}
 
-		void mat4x4::setItem(int row, int col, double value) {
+		void mat4x4::setItem(int row, int col, float value) {
 			elements[row + col * n] = value;
 		}
 
@@ -85,7 +91,7 @@ namespace photon {
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
 
-					double sum = 0.0;
+					float sum = 0.0;
 					for (int k = 0; k < n; k++) {
 						sum += getItem(i, k) * other.getItem(k, j);
 					}
@@ -103,7 +109,7 @@ namespace photon {
 
 			// (Av)_i = sum_j A_ij v_j
 			for (int i = 0; i < n; i++) {
-				double sum = 0;
+				float sum = 0;
 				for (int j = 0; j < n; j++) {
 					sum += getItem(i, j) * other.getItem(j);
 				}

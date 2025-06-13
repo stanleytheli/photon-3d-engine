@@ -9,7 +9,7 @@ namespace photon {
 			}
 		}
 
-		mat3x3::mat3x3(double diagonal) {
+		mat3x3::mat3x3(float diagonal) {
 			for (int i = 0; i < n * n; i++) {
 				elements[i] = 0.0;
 			}
@@ -36,11 +36,11 @@ namespace photon {
 			v2 = getColumn(2);
 		}
 
-		double mat3x3::getItem(int row, int col) const {
+		float mat3x3::getItem(int row, int col) const {
 			return elements[row + col * n];
 		}
 
-		void mat3x3::setItem(int row, int col, double value) { 
+		void mat3x3::setItem(int row, int col, float value) { 
 			elements[row + col * n] = value; 
 		}
 
@@ -79,7 +79,7 @@ namespace photon {
 			for (int i = 0; i < n; i++) {
 				for (int j = 0; j < n; j++) {
 
-					double sum = 0.0;
+					float sum = 0.0;
 					for (int k = 0; k < n; k++) {
 						sum += getItem(i, k) * other.getItem(k, j);
 					}
@@ -97,7 +97,7 @@ namespace photon {
 
 			// (Av)_i = sum_j A_ij v_j
 			for (int i = 0; i < n; i++) {
-				double sum = 0;
+				float sum = 0;
 				for (int j = 0; j < n; j++) {
 					sum += getItem(i, j) * other.getItem(j);
 				}

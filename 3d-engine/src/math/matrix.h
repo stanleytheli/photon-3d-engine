@@ -8,18 +8,18 @@ namespace photon {
 		struct mat3x3 {
 			// M_ij = elements[j + i*n]
 			int n = 3;
-			double elements[9];
+			float elements[9];
 
 			// 3x3 matrix full of zeroes
 			mat3x3();
-			mat3x3(double diagonal);
+			mat3x3(float diagonal);
 
 			static mat3x3 identity();
 			static mat3x3 basis(const vec3& v0, const vec3& v1, const vec3& v2);
 			void basisUnpack(vec3& v0, vec3& v1, vec3& v2) const;
 
-			inline double getItem(int col, int row) const;
-			void setItem(int col, int row, double value);
+			inline float getItem(int col, int row) const;
+			void setItem(int col, int row, float value);
 
 			vec3 getColumn(int col) const;
 			vec3 getRow(int row) const;
@@ -42,18 +42,21 @@ namespace photon {
 		struct mat4x4 {
 			// M_ij = elements[j + i*n]
 			int n = 4;
-			double elements[16];
+			float elements[16];
 
 			// 4x4 matrix full of zeroes
 			mat4x4();
-			mat4x4(double diagonal);
+			mat4x4(float diagonal);
 
 			static mat4x4 identity();
 			static mat4x4 basis(const vec4& v0, const vec4& v1, const vec4& v2, const vec4& v3);
+
+			static mat4x4 scale(float factor);
+
 			void basisUnpack(vec4& v0, vec4& v1, vec4& v2, vec4& v3) const;
 
-			inline double getItem(int col, int row) const;
-			void setItem(int col, int row, double value);
+			inline float getItem(int col, int row) const;
+			void setItem(int col, int row, float value);
 
 			vec4 getColumn(int col) const;
 			vec4 getRow(int row) const;

@@ -21,7 +21,7 @@ namespace photon {
 			vec2& divide(const vec2& other);
 
 			// Returns the value of (this vector) dot (other vector)
-			float dot(const vec2& other);
+			float dot(const vec2& other) const;
 
 			float getItem(int i) const;
 			void setItem(int i, float val);
@@ -40,9 +40,9 @@ namespace photon {
 			bool operator!=(const vec2& other);
 
 			// Get the magnitude = sqrt(v dot v) of this vector
-			float magnitude();
+			float magnitude() const;
 			// Get a normalized copy of this vector
-			vec2 normalized();
+			vec2 normalized() const;
 			// Multiplies this vector by a scalar
 			vec2& multiply(const float scale);
 			// Divides this vector by a scalar
@@ -71,9 +71,9 @@ namespace photon {
 			vec3& divide(const vec3& other);
 			
 			// Returns the value of (this vector) dot (given vector)
-			float dot(const vec3& other);
+			float dot(const vec3& other) const;
 			// Returns the result of (this vector) cross (given vector)
-			vec3 cross(const vec3& other);
+			vec3 cross(const vec3& other) const;
 
 			float getItem(int i) const;
 			void setItem(int i, float val);
@@ -92,9 +92,9 @@ namespace photon {
 			bool operator!=(const vec3& other);
 
 			// Get the magnitude = sqrt(v dot v) of this vector
-			float magnitude();
+			float magnitude() const;
 			// Get a normalized copy of this vector
-			vec3 normalized();
+			vec3 normalized() const;
 			// Multiplies this vector by a scalar
 			vec3& multiply(const float scale);
 			// Divides this vector by a scalar
@@ -123,7 +123,7 @@ namespace photon {
 			vec4& divide(const vec4& other);
 
 			// Returns the value of (this vector) dot (given vector)
-			float dot(const vec4& other);
+			float dot(const vec4& other) const;
 
 			float getItem(int i) const;
 			void setItem(int i, float val);
@@ -142,9 +142,9 @@ namespace photon {
 			bool operator!=(const vec4& other);
 
 			// Get the magnitude = sqrt(v dot v) of this vector
-			float magnitude();
+			float magnitude() const;
 			// Get a normalized copy of this vector
-			vec4 normalized();
+			vec4 normalized() const;
 			// Multiplies this vector by a scalar
 			vec4& multiply(const float scale);
 			// Divides this vector by a scalar

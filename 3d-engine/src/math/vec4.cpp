@@ -49,7 +49,7 @@ namespace photon {
 			return *this;
 		}
 
-		float vec4::dot(const vec4& other) {
+		float vec4::dot(const vec4& other) const {
 			return x * other.x + y * other.y + z * other.z + w * other.w;
 		}
 
@@ -108,8 +108,8 @@ namespace photon {
 		bool vec4::operator!=(const vec4& other) { return !(*this == other); }
 
 
-		float vec4::magnitude() { return sqrt(x * x + y * y + z * z + w * w); }
-		vec4 vec4::normalized() {
+		float vec4::magnitude() const { return sqrt(x * x + y * y + z * z + w * w); }
+		vec4 vec4::normalized() const {
 			vec4 output = *this;
 			output.divide(magnitude());
 			return output;

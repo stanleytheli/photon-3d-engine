@@ -43,10 +43,10 @@ namespace photon {
 			return *this;
 		}
 
-		float vec3::dot(const vec3& other) {
+		float vec3::dot(const vec3& other) const {
 			return x * other.x + y * other.y + z * other.z;
 		}
-		vec3 vec3::cross(const vec3& other) {
+		vec3 vec3::cross(const vec3& other) const {
 			vec3 output(
 				y * other.z - z * other.y,
 				z * other.x - x * other.z,
@@ -102,8 +102,8 @@ namespace photon {
 		bool vec3::operator==(const vec3& other) { return (x == other.x) && (y == other.y) && (z == other.z); }
 		bool vec3::operator!=(const vec3& other) { return !(*this == other); }
 
-		float vec3::magnitude() { return sqrt(x * x + y * y + z * z); }
-		vec3 vec3::normalized() {
+		float vec3::magnitude() const { return sqrt(x * x + y * y + z * z); }
+		vec3 vec3::normalized() const {
 			vec3 output = *this;
 			output.divide(magnitude());
 			return output;

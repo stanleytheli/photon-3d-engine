@@ -37,6 +37,29 @@ namespace photon {
 			return output;
 		}
 
+		mat4x4 mat4x4::translate(const vec3& delta) {
+			mat4x4 output = mat4x4::identity();
+			output.setItem(0, 3, delta.x);
+			output.setItem(1, 3, delta.y);
+			output.setItem(2, 3, delta.z);
+			return output;
+		}
+
+		mat4x4 mat4x4::rotate(const mat3x3& rotation) {
+			mat4x4 output = mat4x4::identity();
+			for (int i = 0; i < 3; i++) {
+				for (int j = 0; j < 3; j++) {
+					output.setItem(i, j, rotation.getItem(i, j));
+				}
+			}
+			return output;
+		}
+
+		mat4x4 mat4x4::rotate(const vec3& axis, const float theta) {
+			mat3x3 R = mat3x3::rotate(axis, theta);
+			return rotate(R);
+		}
+
 		void mat4x4::basisUnpack(vec4& v0, vec4& v1, vec4& v2, vec4& v3) const {
 			v0 = getColumn(0);
 			v1 = getColumn(1);
@@ -102,6 +125,28 @@ namespace photon {
 
 			*this = output;
 			return *this;
+		}
+
+		mat4x4& mat4x4::transpose() {
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+
+					if (i >= j) { continue; }
+					// Case j < i (swap them):
+					float temp = getItem(i, j);
+					setItem(i, j, getItem(j, i));
+					setItem(j, i, temp);
+
+				}
+			}
+			return *this;
+		}
+		mat4x4 mat4x4::transposed() {
+			mat4x4 output = *this;
+			return output.transpose();
+		}
+		mat4x4 mat4x4::T() {
+			return transposed();
 		}
 
 		vec4 mat4x4::multiply(const vec4& other) const {

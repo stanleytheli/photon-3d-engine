@@ -1,4 +1,5 @@
 #include "matrix.h"
+#include <cmath>
 
 namespace photon {
 	namespace math {
@@ -28,6 +29,30 @@ namespace photon {
 			output.setColumn(1, v1);
 			output.setColumn(2, v2);
 			return output;
+		}
+
+		mat3x3 mat3x3::rotate(const vec3& axis, const float theta) {
+			vec3 a = axis.normalized();
+			float sint = std::sin(theta);
+			float cost = std::cos(theta);
+
+			// Get valid orthonormal basis
+			vec3 v = vec3(-a.y, a.x, 0);
+			if (a.z > 0.707) { 
+				v = vec3(0, -a.z, a.y);
+			}
+			v = v.normalized();
+			vec3 w = a.cross(v);
+			
+			// Rotate orthonormal basis
+			vec3 vp = v * cost + w * sint;
+			vec3 wp = w * cost - v * sint;
+
+			mat3x3 B0 = mat3x3::basis(v, w, a);
+			mat3x3 B1 = mat3x3::basis(vp, wp, a);
+
+			mat3x3 R = B1 * B0.transpose();
+			return R;
 		}
 
 		void mat3x3::basisUnpack(vec3& v0, vec3& v1, vec3& v2) const {
@@ -71,6 +96,30 @@ namespace photon {
 			elements[row + 1 * n] = value.y;
 			elements[row + 2 * n] = value.z;
 		}
+
+		mat3x3& mat3x3::transpose() {
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+
+					if (i >= j) { continue; }
+					// Case j < i (swap them):
+					float temp = getItem(i, j);
+					setItem(i, j, getItem(j, i));
+					setItem(j, i, temp);
+
+				}
+			}
+			return *this;
+		}
+		mat3x3 mat3x3::transposed() {
+			mat3x3 output = *this;
+			return output.transpose();
+		}
+		mat3x3 mat3x3::T() {
+			return transposed();
+		}
+
+		
 
 		mat3x3& mat3x3::multiply(const mat3x3& other) {
 			mat3x3 output = mat3x3();

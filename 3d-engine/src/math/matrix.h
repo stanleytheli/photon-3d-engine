@@ -16,6 +16,7 @@ namespace photon {
 
 			static mat3x3 identity();
 			static mat3x3 basis(const vec3& v0, const vec3& v1, const vec3& v2);
+			static mat3x3 rotate(const vec3& axis, const float theta);
 			void basisUnpack(vec3& v0, vec3& v1, vec3& v2) const;
 
 			inline float getItem(int col, int row) const;
@@ -26,6 +27,13 @@ namespace photon {
 			void setColumn(int col, const vec3& value);
 			void setRow(int row, const vec3& value);
 
+			// Tranposes this matrix
+			mat3x3& transpose();
+			// Returns a transposed copy of this matrix
+			mat3x3 transposed();
+			// Returns a transposed copy of this matrix
+			mat3x3 T();
+			
 			// Multiplies this matrix by the given matrix, using matrix multiplication
 			mat3x3& multiply(const mat3x3& other);
 			// Returns the result of (this matrix) * (vector), using matrix multiplication
@@ -52,6 +60,9 @@ namespace photon {
 			static mat4x4 basis(const vec4& v0, const vec4& v1, const vec4& v2, const vec4& v3);
 
 			static mat4x4 scale(float factor);
+			static mat4x4 translate(const vec3& delta);
+			static mat4x4 rotate(const mat3x3& rotation);
+			static mat4x4 rotate(const vec3& axis, const float theta);
 
 			void basisUnpack(vec4& v0, vec4& v1, vec4& v2, vec4& v3) const;
 
@@ -62,6 +73,13 @@ namespace photon {
 			vec4 getRow(int row) const;
 			void setColumn(int col, const vec4& value);
 			void setRow(int row, const vec4& value);
+
+			// Tranposes this matrix
+			mat4x4& transpose();
+			// Returns a transposed copy of this matrix
+			mat4x4 transposed();
+			// Returns a transposed copy of this matrix
+			mat4x4 T();
 
 			// Multiplies this matrix by the given matrix, using matrix multiplication
 			mat4x4& multiply(const mat4x4& other);

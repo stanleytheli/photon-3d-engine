@@ -36,6 +36,21 @@ namespace photon {
 			float sint = std::sin(theta);
 			float cost = std::cos(theta);
 
+			mat3x3 R = mat3x3();
+			R.elements[0] = a.x * a.x * (1 - cost) + cost;
+			R.elements[1] = a.x * a.y * (1 - cost) + a.z * sint;
+			R.elements[2] = a.x * a.z * (1 - cost) - a.y * sint;
+			R.elements[3] = a.x * a.y * (1 - cost) - a.z * sint;
+			R.elements[4] = a.y * a.y * (1 - cost) + cost;
+			R.elements[5] = a.y * a.z * (1 - cost) + a.x * sint;
+			R.elements[6] = a.x * a.z * (1 - cost) + a.y * sint;
+			R.elements[7] = a.y * a.z * (1 - cost) - a.x * sint;
+			R.elements[8] = a.z * a.z * (1 - cost) + cost;
+			return R;
+
+			/* 
+			// Old, non-hard-coded algorithm
+
 			// Get valid orthonormal basis
 			vec3 v = vec3(-a.y, a.x, 0);
 			if (a.z > 0.707) { 
@@ -53,6 +68,7 @@ namespace photon {
 
 			mat3x3 R = B1 * B0.transpose();
 			return R;
+			*/
 		}
 
 		void mat3x3::basisUnpack(vec3& v0, vec3& v1, vec3& v2) const {

@@ -71,6 +71,11 @@ namespace photon {
 		}
 
 		void Window::update() {
+			GLenum GLerror = glGetError();
+			if (GLerror != GL_NO_ERROR) {
+				std::cout << "OpenGL Error: " << GLerror << std::endl;
+			}
+
 			glfwPollEvents();
 			glfwSwapBuffers(m_window);
 			// std::cout << getMouseX() << ", " << getMouseY() << std::endl;

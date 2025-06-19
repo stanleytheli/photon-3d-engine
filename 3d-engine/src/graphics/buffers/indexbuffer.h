@@ -14,6 +14,7 @@ namespace photon {
 
 		public:
 			IndexBuffer(GLuint* data, GLsizei count);
+			~IndexBuffer();
 
 			void bind() const;
 			void unbind() const;

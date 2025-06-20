@@ -13,15 +13,17 @@
 
 #include "src/math/math.h"
 #include "src/utils/fileUtils.h"
+#include "src/utils/timer.h"
 
 #define PRINT(x) std::cout << x << std::endl
 #define PI 3.141592653
 
 int main() {
+	using namespace photon;
 	using namespace photon::graphics;
 	using namespace photon::math;
 
-	Window window("Renderer", 1000, 700);
+	Window window("Renderer", 900, 800);
 
 	//glClearColor(0.454, 0.890, 0.882, 1.0);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -43,13 +45,13 @@ int main() {
 
 	std::vector<Renderable2D*> sprites;
 
-	for (float x = -1.0; x < 1.0; x += 0.05) {
-		for (float y = -1.0; y < 1.0; y += 0.05) {
+	for (float x = -1.0; x < 1.0; x += 0.02) {
+		for (float y = -1.0; y < 1.0; y += 0.02) {
 			sprites.push_back(
-				new Sprite(x, y, 0, 0.04, 0.04, vec4(
+				new Sprite(x, y, 0, 0.018, 0.018, vec4(
 					rand() % 1000 / 2000.0f, 
-					rand() % 1000 / 1000.0f,
-					0.25,
+					rand() % 1000 / 2000.0f,
+					rand() % 1000 / 1000.0f, 
 					1.0))
 			);
 		}
@@ -57,7 +59,11 @@ int main() {
 
 	BatchRenderer2D renderer;
 
+	Timer timer;
+	unsigned short frames = 0;
+
 	while (!window.closed()) {
+
 		window.clear();
 
 		float x = window.getMouseX(), y = window.getMouseY();
@@ -67,17 +73,21 @@ int main() {
 		shader.setUniform2f("light_pos", vec2(normMouseX, normMouseY));
 
 		renderer.begin();
-
 		for (int i = 0; i < sprites.size(); i++) {
 			renderer.submit(sprites[i]);
 		}
-
 		renderer.end();
 
 		renderer.flush();
 
-		
 		window.update();
+
+		frames++;
+		if (timer.elapsed() > 1.0) {
+			std::cout << "FPS: " << frames << "\n";
+			timer.reset();
+			frames = 0;
+		}
 	}
 
 	return 0;

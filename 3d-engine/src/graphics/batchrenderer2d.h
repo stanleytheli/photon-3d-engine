@@ -1,11 +1,12 @@
 #pragma once
 #include "renderer2d.h"
 #include "buffers/indexbuffer.h"
+#include <cstddef>
 
 namespace photon {
 	namespace graphics {
 
-#define MAX_SPRITES			10000
+#define MAX_SPRITES			25000
 #define VERTEX_SIZE			sizeof(VertexData)
 #define SPRITE_SIZE			(VERTEX_SIZE * 4)
 #define BUFFER_SIZE			(SPRITE_SIZE * MAX_SPRITES)

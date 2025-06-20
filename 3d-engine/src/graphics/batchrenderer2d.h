@@ -31,8 +31,8 @@ namespace photon {
 			void submit(const Renderable2D* renderable) override;
 			void flush() override;
 
-			void begin();
-			void end();
+			void begin() override;
+			void end() override;
 		private:
 			void init();
 		};

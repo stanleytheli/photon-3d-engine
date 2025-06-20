@@ -37,6 +37,14 @@ namespace photon {
 			return output;
 		}
 
+		mat4x4 mat4x4::scale(float factor0, float factor1, float factor2) {
+			mat4x4 output = mat4x4();
+			output.setItem(0, 0, factor0);
+			output.setItem(1, 1, factor1);
+			output.setItem(2, 2, factor2);
+			return output;
+		}
+
 		mat4x4 mat4x4::translate(const vec3& delta) {
 			mat4x4 output = mat4x4::identity();
 			output.setItem(0, 3, delta.x);
@@ -58,6 +66,17 @@ namespace photon {
 		mat4x4 mat4x4::rotate(const vec3& axis, const float theta) {
 			mat3x3 R = mat3x3::rotate(axis, theta);
 			return rotate(R);
+		}
+
+		mat4x4 mat4x4::orthographic(float left, float right, float bottom, float top, float near, float far) {
+			mat4x4 output = mat4x4::scale(2 / (right - left), 2 / (top - bottom), 2 / (far - near));
+			output.setColumn(3, vec4(
+				-(right + left) / (right - left),
+				-(top + bottom) / (top - bottom),
+				-(far + near) / (far - near),
+				1.0
+			));
+			return output;
 		}
 
 		void mat4x4::basisUnpack(vec4& v0, vec4& v1, vec4& v2, vec4& v3) const {
@@ -129,14 +148,11 @@ namespace photon {
 
 		mat4x4& mat4x4::transpose() {
 			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < n; j++) {
-
-					if (i >= j) { continue; }
-					// Case j < i (swap them):
+				for (int j = 0; j < i; j++) {
+					// Invariant: j < i:
 					float temp = getItem(i, j);
 					setItem(i, j, getItem(j, i));
 					setItem(j, i, temp);
-
 				}
 			}
 			return *this;

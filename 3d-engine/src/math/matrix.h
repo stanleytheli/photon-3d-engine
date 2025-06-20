@@ -60,9 +60,12 @@ namespace photon {
 			static mat4x4 basis(const vec4& v0, const vec4& v1, const vec4& v2, const vec4& v3);
 
 			static mat4x4 scale(float factor);
+			static mat4x4 scale(float factor0, float factor1, float factor2);
 			static mat4x4 translate(const vec3& delta);
 			static mat4x4 rotate(const mat3x3& rotation);
 			static mat4x4 rotate(const vec3& axis, const float theta);
+			
+			static mat4x4 orthographic(float left, float right, float bottom, float top, float near, float far);
 
 			void basisUnpack(vec4& v0, vec4& v1, vec4& v2, vec4& v3) const;
 

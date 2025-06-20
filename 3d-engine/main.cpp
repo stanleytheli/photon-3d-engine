@@ -31,8 +31,6 @@ int main() {
 
 	Shader* shader = new Shader("src/shaders/basic.vert", "src/shaders/basic.frag");
 	shader->enable();
-
-	shader->setUniformMat4("pr_matrix", mat4x4::identity());
 	shader->setUniformMat4("vw_matrix", mat4x4::identity());
 	shader->setUniformMat4("ml_matrix", mat4x4::identity());
 
@@ -44,7 +42,9 @@ int main() {
 	Sprite sprite3(0.1, -0.5, 0, 0.4, 0.6, vec4(0.125, 0.722, 0.035, 1.0));
 	*/
 
-	TileLayer layer(shader);
+	mat4x4 prMatrix = mat4x4::orthographic(-1, 1, -1, 1, -2, 2);
+
+	TileLayer layer(shader, prMatrix);
 	for (float x = -1.0; x < 1.0; x += 0.02) {
 		for (float y = -1.0; y < 1.0; y += 0.02) {
 			layer.add(

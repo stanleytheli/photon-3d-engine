@@ -10,6 +10,7 @@ namespace photon {
 
 		public:
 			TileLayer(Shader* shader);
+			TileLayer(Shader* shader, math::mat4x4 prMatrix);
 			~TileLayer();
 
 		};
